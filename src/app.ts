@@ -1,9 +1,17 @@
+import * as finalhandler from 'finalhandler'
 import * as http from 'http'
 import { IncomingMessage, ServerResponse } from 'http'
+import * as serveStatic from 'serve-static'
+ 
+console.log("Listening...")
 
-console.log("Running server...")
-
-http.createServer((req: IncomingMessage, res: ServerResponse) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'})
-    res.end('Hello World!')
-}).listen(8080)
+// Serve up public/ftp folder
+var serve = serveStatic('public', {'index': ['html/index.html']})
+ 
+// Create server
+var server = http.createServer((req: any, res: any) => {
+    serve(req, res, finalhandler(req, res))
+})
+ 
+// Listen
+server.listen(3000)

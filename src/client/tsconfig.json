@@ -3,15 +3,12 @@
         "module": "commonjs",
         "target": "es6",
         "moduleResolution": "node",
-        "outDir": "dist",
+        "outDir": "../../public/js",
         "sourceMap": true,
         "noImplicitReturns": true,
         "strict": true
     },
     "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
-        "src/client/**/*.ts"
+        "./**/*.ts"
     ]
 }
